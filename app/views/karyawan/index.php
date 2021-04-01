@@ -93,8 +93,8 @@
           <div class="form-group">
               <label for="gambar">Profile : </label>
               <input type="file" id="gambar" name="gambar">
-              <small id="passwordHelpBlock" class="form-text text-muted">
-                NOTE:Profile Harus Diupload,file harus jpg,jpeg,png,ukuran file maksimal 1mb
+              <small id="passwordHelpBlock" class="form-text text-muted helptext">
+                
               </small>
           </div>
 

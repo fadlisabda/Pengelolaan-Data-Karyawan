@@ -7,12 +7,14 @@ $(function(){
 	        $('#email').val('');
 	        $('#skill').val('');
 	        $('#id').val('');
+	        $('.helptext').html('NOTE:Profile Harus Diupload,file harus jpg,jpeg,png,ukuran file maksimal 1mb');
 		});
 
 	$('.tampilModalUbah').on('click',function(){
 		$('#formModalLabel').html('Ubah Data Karyawan');
 		$('.modal-footer button[type=submit]').html('Ubah Data');
 		$('.modal-body form').attr('action','http://localhost/latihan/public/karyawan/ubah');
+		$('.helptext').html('NOTE:file harus jpg,jpeg,png,ukuran file maksimal 1mb');
 		const id = $(this).data('id');
 		$.ajax({
 			url: 'http://localhost/latihan/public/karyawan/getubah',
