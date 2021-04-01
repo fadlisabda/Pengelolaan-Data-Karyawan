@@ -49,15 +49,15 @@
  	public function tambahDataKaryawan($data){
  		$query="INSERT INTO karyawan VALUES ('',:nama,:nohp,:email,:skill,:gambar)";
  		$this->db->query($query);
- 		$this->db->bind('nama',$data['nama']);
- 		$this->db->bind('nohp',$data['nohp']);
- 		$this->db->bind('email',$data['email']);
- 		$this->db->bind('skill',$data['skill']);
+ 		$this->db->bind('nama',htmlspecialchars($data['nama']));
+ 		$this->db->bind('nohp',htmlspecialchars($data['nohp']));
+ 		$this->db->bind('email',htmlspecialchars($data['email']));
+ 		$this->db->bind('skill',htmlspecialchars($data['skill']));
  		$gambar=$this->upload();
  		if( !$gambar ) {
 			return false;
 		}
- 		$this->db->bind('gambar',$gambar);
+ 		$this->db->bind('gambar',htmlspecialchars($gambar));
  		$this->db->execute();
  		return $this->db->rowCount();
  	}
@@ -73,11 +73,11 @@
  	public function ubahDataKaryawan($data){
  		$query="UPDATE karyawan SET nama = :nama,nohp = :nohp,email = :email,skill = :skill,gambar = :gambar WHERE id = :id";
  		$this->db->query($query);
- 		$this->db->bind('nama',$data['nama']);
- 		$this->db->bind('nohp',$data['nohp']);
- 		$this->db->bind('email',$data['email']);
- 		$this->db->bind('skill',$data['skill']);
- 		$this->db->bind('id',$data['id']);
+ 		$this->db->bind('nama',htmlspecialchars($data['nama']));
+ 		$this->db->bind('nohp',htmlspecialchars($data['nohp']));
+ 		$this->db->bind('email',htmlspecialchars($data['email']));
+ 		$this->db->bind('skill',htmlspecialchars($data['skill']));
+ 		$this->db->bind('id',htmlspecialchars($data['id']));
  		$gambarLama=$data['gambarLama'];
  		if ($_FILES['gambar']['error'] === 4) {
  			$gambar=$gambarLama;
@@ -85,7 +85,7 @@
  		else{
  			$gambar=$this->upload();
  		}
- 		$this->db->bind('gambar',$gambar);
+ 		$this->db->bind('gambar',htmlspecialchars($gambar));
  		$this->db->execute();
  		return $this->db->rowCount();
  	}

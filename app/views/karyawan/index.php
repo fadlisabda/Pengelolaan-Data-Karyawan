@@ -65,22 +65,22 @@
           <input type="hidden" name="gambarLama" id="gambarLama">
           <div class="form-group">
             <label for="nama">Nama</label>
-            <input type="text" class="form-control" id="nama" name="nama" autocomplete="off">
+            <input type="text" class="form-control" id="nama" name="nama" autocomplete="off" required>
           </div>
 
           <div class="form-group">
             <label for="nohp">No Hp</label>
-            <input type="number" class="form-control" id="nohp" name="nohp" autocomplete="off">
+            <input type="number" class="form-control" id="nohp" name="nohp" autocomplete="off" required>
           </div>
 
           <div class="form-group">
             <label for="email">Email</label>
-            <input type="email" class="form-control" id="email" name="email" placeholder="email@example.com" autocomplete="off">
+            <input type="email" class="form-control" id="email" name="email" placeholder="email@example.com" autocomplete="off" required>
           </div>
 
           <div class="form-group">
             <label for="skill">Skill</label>
-            <select class="custom-select" id="skill" name="skill" multiple>
+            <select class="custom-select" id="skill" name="skill" multiple required>
               <option value="HTML">HTML</option>
               <option value="CSS">CSS</option>
               <option value="PHP">PHP</option>
@@ -92,7 +92,7 @@
 
           <div class="form-group">
               <label for="gambar">Profile : </label>
-              <input type="file" id="gambar" name="gambar" aria-describedby="passwordHelpBlock">
+              <input type="file" id="gambar" name="gambar">
               <small id="passwordHelpBlock" class="form-text text-muted">
                 NOTE:Profile Harus Diupload,file harus jpg,jpeg,png,ukuran file maksimal 1mb
               </small>
