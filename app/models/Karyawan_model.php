@@ -26,31 +26,16 @@
  		$tmpName = $_FILES['gambar']['tmp_name'];
 
  		if ($error === 4) {
- 			echo "
- 				<script>
- 					alert('pilih gambar terlebih dahulu!');
- 				</script>	
- 			";
  			return false;
  		}
 
  		$ekstensi1=["jpg","jpeg","png"];
  		$ekstensi2=pathinfo(strtolower($namaFile),PATHINFO_EXTENSION);
  		if (!in_array($ekstensi2, $ekstensi1)) {
- 			echo "
- 				<script>
- 					alert('yang anda upload bukan gambar');
- 				</script>	
- 			";
  			return false;
  		}
 
  		if ($ukuranFile>1000000) {
- 			echo "
- 				<script>
- 					alert('ukuran gambar terlalu besar!');
- 				</script>	
- 			";
  			return false;
  		}
 
