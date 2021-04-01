@@ -19,22 +19,6 @@
  		return $this->db->single();		
  	}
 
- 	public function tambahDataKaryawan($data){
- 		$query="INSERT INTO karyawan VALUES ('',:nama,:nohp,:email,:skill,:gambar)";
- 		$this->db->query($query);
- 		$this->db->bind('nama',$data['nama']);
- 		$this->db->bind('nohp',$data['nohp']);
- 		$this->db->bind('email',$data['email']);
- 		$this->db->bind('skill',$data['skill']);
- 		$gambar=$this->upload();
- 		if( !$gambar ) {
-			return false;
-		}
- 		$this->db->bind('gambar',$gambar);
- 		$this->db->execute();
- 		return $this->db->rowCount();
- 	}
-
  	public function upload(){
  		$namaFile = $_FILES['gambar']['name'];
  		$ukuranFile = $_FILES['gambar']['size'];
@@ -75,6 +59,22 @@
  		$namaFileBaru .= $ekstensi2;
  		move_uploaded_file($tmpName, 'img/' . $namaFileBaru);
  		return $namaFileBaru;
+ 	}
+
+ 	public function tambahDataKaryawan($data){
+ 		$query="INSERT INTO karyawan VALUES ('',:nama,:nohp,:email,:skill,:gambar)";
+ 		$this->db->query($query);
+ 		$this->db->bind('nama',$data['nama']);
+ 		$this->db->bind('nohp',$data['nohp']);
+ 		$this->db->bind('email',$data['email']);
+ 		$this->db->bind('skill',$data['skill']);
+ 		$gambar=$this->upload();
+ 		if( !$gambar ) {
+			return false;
+		}
+ 		$this->db->bind('gambar',$gambar);
+ 		$this->db->execute();
+ 		return $this->db->rowCount();
  	}
 
  	public function hapusDataKaryawan($id){

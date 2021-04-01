@@ -61,10 +61,8 @@
       <div class="modal-body">
         
         <form action="<?= BASEURL; ?>/karyawan/tambah" method="post" enctype="multipart/form-data">
-          <input type="hidden" name="id" id="id">
-          <?php foreach ($data['karyawan'] as $tampilkan): ?>  
-            <input type="text" name="gambarLama" id="gambarLama" value="<?= $tampilkan['gambar']; ?>">
-          <?php endforeach; ?>
+          <input type="hidden" name="id" id="id">  
+          <input type="hidden" name="gambarLama" id="gambarLama">
           <div class="form-group">
             <label for="nama">Nama</label>
             <input type="text" class="form-control" id="nama" name="nama" autocomplete="off">

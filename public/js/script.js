@@ -24,6 +24,7 @@ $(function(){
 				$('#nohp').val(data.nohp);
 				$('#email').val(data.email);
 				$('#skill').val(data.skill);
+				$('#gambarLama').val(data.gambar);
 				$('#id').val(data.id);
 			}
 		});
