@@ -29,8 +29,8 @@ class Karyawan extends Controller{
 		}
 	}
 
-	public function hapus($id){
-		if ($this->model('Karyawan_model')->hapusDataKaryawan($id) > 0) {
+	public function hapus($id,$gambar){
+		if ($this->model('Karyawan_model')->hapusDataKaryawan($id,$gambar) > 0) {
 			Flasher::setFlash('berhasil','dihapus','success');
 			header('Location: '.BASEURL.'/karyawan');
 			exit;

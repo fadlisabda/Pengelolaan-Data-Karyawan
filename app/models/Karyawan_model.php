@@ -62,11 +62,13 @@
  		return $this->db->rowCount();
  	}
 
- 	public function hapusDataKaryawan($id){
+ 	public function hapusDataKaryawan($id,$gambar){
  		$query="DELETE FROM karyawan WHERE id=:id";
  		$this->db->query($query);
  		$this->db->bind('id',$id);
  		$this->db->execute();
+ 		$path="img/$gambar";
+ 		unlink($path);
  		return $this->db->rowCount();
  	}
 
@@ -83,6 +85,8 @@
  			$gambar=$gambarLama;
  		}
  		else{
+ 			$path="img/$gambarLama";
+ 			unlink($path);
  			$gambar=$this->upload();
  		}
  		$this->db->bind('gambar',htmlspecialchars($gambar));

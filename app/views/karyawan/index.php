@@ -34,7 +34,7 @@
             <?php foreach( $data['karyawan'] as $kry ) : ?>
               <li class="list-group-item">
                   <?= $kry['nama']; ?>
-                  <a href="<?= BASEURL; ?>/karyawan/hapus/<?= $kry['id']; ?>" class="badge badge-danger float-right" onclick="return confirm('yakin?');" style="margin-left: 3px;">hapus</a>
+                  <a href="<?= BASEURL; ?>/karyawan/hapus/<?= $kry['id']; ?>/<?= $kry['gambar']; ?>" class="badge badge-danger float-right" onclick="return confirm('yakin?');" style="margin-left: 3px;">hapus</a>
 
                   <a href="<?= BASEURL; ?>/karyawan/ubah/<?= $kry['id']; ?>" class="badge badge-success float-right tampilModalUbah" data-toggle="modal" data-target="#formModal" data-id="<?= $kry['id']; ?>" style="margin-left: 3px;">ubah</a>
 
@@ -93,9 +93,7 @@
           <div class="form-group">
               <label for="gambar">Profile : </label>
               <input type="file" id="gambar" name="gambar">
-              <small id="passwordHelpBlock" class="form-text text-muted helptext">
-                
-              </small>
+              <small id="passwordHelpBlock" class="form-text text-muted helptext"></small>
           </div>
 
       </div>
