@@ -7,31 +7,25 @@
 	<link rel="stylesheet" href="<?= BASEURL; ?>/css/bootstrap.min.css">
 </head>
 <body>
-    <h1>Halaman Registrasi</h1>
-    <div class="row">
-      <div class="col-lg-6">
-        <?php Flasher::flash(); ?>
-      </div>
-    </div>	
-    <form action="<?= BASEURL; ?>/register/tambah" method="post">
-	    <ul>
-			<li>
-				<label for="username">username :</label>
-				<input type="text" name="username" id="username">
-			</li>
-			<li>
-				<label for="password">password :</label>
-				<input type="password" name="password" id="password">
-			</li>
-			<li>
-				<label for="password2">konfirmasi password :</label>
-				<input type="password" name="password2" id="password2">
-			</li>
-			<li>
-				<button type="submit">Register!</button>
-			</li>
-		</ul>	
-    </form>
+	<div class="container">
+		<h3 class="text-center">Halaman Registrasi</h3>
+		<?php Flasher::flash(); ?>
+	    <form action="<?= BASEURL; ?>/register/tambah" method="post">
+			<div cass="form-group">
+				<label for="username">Username</label>
+				<input type="text" name="username" id="username" class="form-control" required autocomplete="off" autofocus>
+			</div>	
+			<div cass="form-group">	
+				<label for="password">Password</label>
+				<input type="password" name="password" id="password" class="form-control" required>
+			</div>
+			<div cass="form-group">	
+				<label for="password2">Konfirmasi Password</label>
+				<input type="password" name="password2" id="password2" class="form-control" required>
+			</div>	
+			<button type="submit" class="btn btn-primary mt-2 btn-block">Register</button>	
+		</form> 
+	</div>	
     <script src="<?= BASEURL; ?>/js/jquery-3.3.1.min.js"></script>
 	<script src="<?= BASEURL; ?>/js/popper.min.js"></script>
 	<script src="<?= BASEURL; ?>/js/bootstrap.min.js"></script>
