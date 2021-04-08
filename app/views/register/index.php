@@ -3,17 +3,17 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Halaman Register</title>
+	<title>Register</title>
 	<link rel="stylesheet" href="<?= BASEURL; ?>/css/bootstrap.min.css">
 </head>
 <body>
 	<div class="container">
-		<h3 class="text-center">Halaman Registrasi</h3>
+		<h3 class="text-center">Register</h3>
 		<?php Flasher::flash(); ?>
 	    <form action="<?= BASEURL; ?>/register/tambah" method="post">
 			<div cass="form-group">
 				<label for="username">Username</label>
-				<input type="text" name="username" id="username" class="form-control" required autocomplete="off" autofocus>
+				<input type="text" name="username" id="username" class="form-control" required autocomplete="off" autofocus placeholder="username otomatis huruf kecil">
 			</div>	
 			<div cass="form-group">	
 				<label for="password">Password</label>
