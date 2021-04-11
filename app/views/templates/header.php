@@ -1,3 +1,9 @@
+<?php  
+  if( !isset($_SESSION["login"]) ) {
+    header("Location: ".BASEURL);
+    exit;
+  }
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -18,6 +24,7 @@
           <a class="nav-item nav-link" href="<?= BASEURL; ?>/home">Home <span class="sr-only">(current)</span></a>
           <a class="nav-item nav-link" href="<?= BASEURL; ?>/about">About</a>
           <a class="nav-item nav-link" href="<?= BASEURL; ?>/karyawan">Karyawan</a>
+          <a class="nav-item nav-link" href="logout.php">Logout</a>
         </div>
       </div>
   </div>

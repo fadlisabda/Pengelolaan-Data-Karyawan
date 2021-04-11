@@ -1,3 +1,9 @@
+<?php  
+	if( !isset($_SESSION["login"]) ) {
+		header("Location: ".BASEURL);
+		exit;
+	}
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>

@@ -1,5 +1,11 @@
 <?php 
-	require '../app/config/config.php';require '../app/core/Database.php';
+	session_start();
+	require '../app/config/config.php';
+	if (isset($_SESSION["login"])) {
+		header('Location: '.BASEURL.'/home');
+		exit;
+	}
+	require '../app/core/Database.php';
 	if (isset($_POST["login"])) {
 		$db = new Database;
 		$db->query('SELECT * FROM register WHERE username = :username');
@@ -9,6 +15,7 @@
 			$isi['tes']=$db->resultSet();
 			foreach ($isi['tes'] as $tampilkan) {
 				if (password_verify($_POST["password"], $tampilkan["password"])) {
+					$_SESSION["login"]=true;
 					header('Location: '.BASEURL.'/home');
 					exit;
 				}

@@ -10,11 +10,4 @@ class About extends Controller{
 		$this->view('about/index',$data); 
 		$this->view('templates/footer');
 	}
-
-	public function page(){
-		$data['judul']='page';
-		$this->view('templates/header',$data);
-		$this->view('about/page'); 
-		$this->view('templates/footer');
-	}
 }
