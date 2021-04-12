@@ -12,10 +12,11 @@
 		$db->bind('username',strtolower(stripslashes(htmlspecialchars($_POST["username"]))));
 		$db->execute();
 		if ($db->rowCount() === 1) {
-			$isi['tes']=$db->resultSet();
-			foreach ($isi['tes'] as $tampilkan) {
+			$isi['pass']=$db->resultSet();
+			foreach ($isi['pass'] as $tampilkan) {
 				if (password_verify($_POST["password"], $tampilkan["password"])) {
 					$_SESSION["login"]=true;
+					$_SESSION["nama"]=$tampilkan["username"];
 					header('Location: '.BASEURL.'/home');
 					exit;
 				}
