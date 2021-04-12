@@ -53,7 +53,11 @@
 				<input type="password" name="password" id="password" class="form-control" required>
 			</div>	
 
-			<button type="submit" name="login" class="btn btn-primary btn-block">Login</button>
+			<button type="submit" name="login" class="btn btn-primary btn-block" >Login</button>
+			<p class="font-weight-bold text-center">Belum Daftar ? </p>
+			<div class="text-center">
+				<a href="<?= BASEURL; ?>/register">Daftar Disini</a>
+			</div>	
 		</form>
 	</div>
 	<script src="<?= BASEURL; ?>/js/jquery-3.3.1.min.js"></script>

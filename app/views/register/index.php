@@ -1,9 +1,3 @@
-<?php  
-	if( !isset($_SESSION["login"]) ) {
-		header("Location: ".BASEURL);
-		exit;
-	}
-?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -30,6 +24,10 @@
 				<input type="password" name="password2" id="password2" class="form-control" required>
 			</div>	
 			<button type="submit" class="btn btn-primary mt-2 btn-block">Register</button>	
+			<p class="font-weight-bold text-center">Sudah Daftar ? </p>
+			<div class="text-center">
+				<a href="<?= BASEURL; ?>">Login Disini</a>
+			</div>	
 		</form> 
 	</div>	
     <script src="<?= BASEURL; ?>/js/jquery-3.3.1.min.js"></script>
