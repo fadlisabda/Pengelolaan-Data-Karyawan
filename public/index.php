@@ -13,6 +13,7 @@
 		foreach ($isi['data1'] as $tampilkan) {
 			if ($key === hash('sha256', $tampilkan['username'])) {
 				$_SESSION['masuk']=true;
+				$_SESSION["nama"]=$tampilkan["username"];
 			}
 		}
 	}
@@ -79,7 +80,7 @@
 			</div>
 
 			<button type="submit" name="login" class="btn btn-primary btn-block">Login</button>
-			
+
 			<p class="font-weight-bold text-center">Belum Daftar ? </p>
 			<div class="text-center">
 				<a href="<?= BASEURL; ?>/register">Daftar Disini</a>
