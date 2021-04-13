@@ -1,22 +1,42 @@
 <?php 
 	session_start();
 	require '../app/config/config.php';
-	if (isset($_SESSION["login"])) {
+	require '../app/core/Database.php';
+	if (isset($_COOKIE['id']) && isset($_COOKIE['key'])) {
+		$id = $_COOKIE['id'];
+		$key= $_COOKIE['key']; 
+		$db = new Database;
+		$db->query('SELECT username FROM register WHERE id = :id');
+		$db->bind('id',strtolower(stripslashes(htmlspecialchars($id))));
+		$db->execute();
+		$isi['data1']=$db->resultSet();
+		foreach ($isi['data1'] as $tampilkan) {
+			if ($key === hash('sha256', $tampilkan['username'])) {
+				$_SESSION['masuk']=true;
+			}
+		}
+	}
+
+	if (isset($_SESSION["masuk"])) {
 		header('Location: '.BASEURL.'/home');
 		exit;
 	}
-	require '../app/core/Database.php';
+
 	if (isset($_POST["login"])) {
 		$db = new Database;
 		$db->query('SELECT * FROM register WHERE username = :username');
 		$db->bind('username',strtolower(stripslashes(htmlspecialchars($_POST["username"]))));
 		$db->execute();
 		if ($db->rowCount() === 1) {
-			$isi['pass']=$db->resultSet();
-			foreach ($isi['pass'] as $tampilkan) {
+			$isi['data2']=$db->resultSet();
+			foreach ($isi['data2'] as $tampilkan) {
 				if (password_verify($_POST["password"], $tampilkan["password"])) {
-					$_SESSION["login"]=true;
+					$_SESSION["masuk"]=true;
 					$_SESSION["nama"]=$tampilkan["username"];
+					if (isset($_POST['remember'])) {
+						setcookie('id',$tampilkan['id'],time()+60);
+						setcookie('key',hash('sha256', $tampilkan['username']),time()+60);
+					}
 					header('Location: '.BASEURL.'/home');
 					exit;
 				}
@@ -53,7 +73,13 @@
 				<input type="password" name="password" id="password" class="form-control" required>
 			</div>	
 
-			<button type="submit" name="login" class="btn btn-primary btn-block" >Login</button>
+			<div class="form-check">
+				<input type="checkbox" name="remember" id="remember" class="form-check-input">
+				<label for="remember" class="form-check-label">remember</label>
+			</div>
+
+			<button type="submit" name="login" class="btn btn-primary btn-block">Login</button>
+			
 			<p class="font-weight-bold text-center">Belum Daftar ? </p>
 			<div class="text-center">
 				<a href="<?= BASEURL; ?>/register">Daftar Disini</a>

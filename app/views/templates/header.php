@@ -1,5 +1,5 @@
 <?php  
-  if( !isset($_SESSION["login"]) ) {
+  if(!isset($_SESSION["masuk"])) {
     header("Location: ".BASEURL);
     exit;
   }
