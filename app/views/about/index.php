@@ -1,5 +1,5 @@
 <div class="container">
 	<h1 class="mt-4">About</h1>
 	<img src="<?= BASEURL; ?>/img/profile.jpg" width="200" class="rounded-circle shadow">	
-	<p>Halo,nama saya <?= $data['nama']; ?>,umur saya <?= $data['umur']; ?>,saya adalah seorang <?= $data['pekerjaan']; ?></p>
+	<p>Halo,nama saya <?= $data['nama']; ?>,umur saya <?= $data['umur']; ?>,saya adalah seorang <?= $data['pekerjaan']; ?> saya adalah pembuat website ini</p>
 </div>
