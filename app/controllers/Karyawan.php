@@ -1,9 +1,9 @@
 <?php 
 
 class Karyawan extends Controller{
-	public function index(){
+	public function index($halaman){
 		$data['judul']='Daftar Karyawan';
-		$data['karyawan']=$this->model('Karyawan_model')->getAllKaryawan();
+		$data['karyawan']=$this->model('Karyawan_model')->getAllKaryawan($halaman);
 		$this->view('templates/header',$data);
 		$this->view('karyawan/index',$data);
 		$this->view('templates/footer');	

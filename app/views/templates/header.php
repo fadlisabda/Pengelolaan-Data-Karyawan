@@ -23,7 +23,7 @@
         <div class="navbar-nav">
           <a class="nav-item nav-link" href="<?= BASEURL; ?>/home">Home <span class="sr-only">(current)</span></a>
           <a class="nav-item nav-link" href="<?= BASEURL; ?>/about">About</a>
-          <a class="nav-item nav-link" href="<?= BASEURL; ?>/karyawan">Karyawan</a>
+          <a class="nav-item nav-link" href="<?= BASEURL; ?>/karyawan/1">Karyawan</a>
           <a class="nav-item nav-link" href="<?= BASEURL; ?>/logout.php">Logout</a>
         </div>
       </div>

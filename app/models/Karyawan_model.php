@@ -3,13 +3,28 @@
  class Karyawan_model{
  	private $table='karyawan';
  	private $db;
-
+ 	
  	public function __construct(){
  		$this->db = new Database;
  	}
 
- 	public function getAllKaryawan(){
- 		$this->db->query('SELECT * FROM ' . $this->table);
+ 	public function getjumlahDataPerHalaman(){
+ 		return $jumlahDataPerHalaman=3;
+ 	}
+
+ 	public function getjumlahHalaman(){
+ 		$this->getjumlahDataPerHalaman();
+		$result=$this->db->query('SELECT * FROM ' . $this->table);
+		$this->db->execute();
+		$jumlahData=$this->db->rowCount();
+ 		return $jumlahHalaman=ceil($jumlahData/$this->getjumlahDataPerHalaman());
+ 	}
+
+ 	public function getAllKaryawan($halaman){
+ 		$this->getjumlahHalaman();
+ 		$halamanAktif=$halaman;
+		$awalData=($this->getjumlahDataPerHalaman()*$halamanAktif)-$this->getjumlahDataPerHalaman();
+ 		$this->db->query('SELECT * FROM ' . $this->table.' LIMIT '.$awalData.','.$this->getjumlahDataPerHalaman());
  		return $this->db->resultSet();
  	}
 

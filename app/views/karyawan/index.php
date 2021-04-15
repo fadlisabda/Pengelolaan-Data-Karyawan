@@ -30,6 +30,31 @@
     <div class="row">
         <div class="col-lg-6">
           <h3>Daftar Karyawan</h3>
+          <?php 
+          $object1 = new Karyawan_model; 
+          $jumlahHalaman=$object1->getjumlahHalaman();
+          $object2 = new App; 
+          $halamanAktif1=$object2->parseURL();
+          $halamanAktif=$halamanAktif1[1];
+          ?>
+
+          <?php if ($halamanAktif>1): ?>
+            <a href="<?= BASEURL; ?>/karyawan/<?= $halamanAktif-1; ?>">&laquo;</a>
+          <?php endif; ?>
+
+          <?php 
+          for ($i=1; $i <= $jumlahHalaman; $i++) : ?>
+            <?php if ($i==$halamanAktif) : ?>
+              <a href="<?= BASEURL; ?>/karyawan/<?= $i; ?>" class="font-weight-bold text-danger"><?= $i; ?></a> 
+            <?php else : ?>
+              <a href="<?= BASEURL; ?>/karyawan/<?= $i; ?>"><?= $i; ?></a>
+            <?php endif; ?>  
+          <?php endfor; ?>
+
+          <?php if ($halamanAktif<$jumlahHalaman): ?>
+            <a href="<?= BASEURL; ?>/karyawan/<?= $halamanAktif+1; ?>">&raquo;</a>
+          <?php endif; ?>
+
           <ul class="list-group">
             <?php foreach( $data['karyawan'] as $kry ) : ?>
               <li class="list-group-item">
