@@ -1,5 +1,4 @@
-<?php 
-
+<?php	
  class Karyawan_model{
  	private $table='karyawan';
  	private $db;
@@ -13,7 +12,6 @@
  	}
 
  	public function getjumlahHalaman(){
- 		$this->getjumlahDataPerHalaman();
 		$result=$this->db->query('SELECT * FROM ' . $this->table);
 		$this->db->execute();
 		$jumlahData=$this->db->rowCount();
@@ -24,7 +22,7 @@
  		$this->getjumlahHalaman();
  		$halamanAktif=$halaman;
 		$awalData=($this->getjumlahDataPerHalaman()*$halamanAktif)-$this->getjumlahDataPerHalaman();
- 		$this->db->query('SELECT * FROM ' . $this->table.' LIMIT '.$awalData.','.$this->getjumlahDataPerHalaman());
+		$this->db->query('SELECT * FROM ' . $this->table.' LIMIT '.$awalData.','.$this->getjumlahDataPerHalaman());
  		return $this->db->resultSet();
  	}
 
@@ -109,12 +107,27 @@
  		return $this->db->rowCount();
  	}
 
- 	public function cariDataKaryawan(){
- 		$keyword=$_POST['keyword'];
- 		$query="SELECT * FROM karyawan WHERE nama LIKE :keyword";
- 		$this->db->query($query);
- 		$this->db->bind('keyword',"%$keyword%");
- 		return $this->db->resultSet();
+ 	public function getjumlahHalaman2(){
+		$keyword = $_SESSION['isi'];
+        $query = "SELECT * FROM karyawan WHERE nama LIKE :keyword";
+        $this->db->query($query);
+        $this->db->bind('keyword', "%$keyword%");
+        $this->db->execute();
+        $jumlahData=$this->db->rowCount();
+        return $jumlahHalaman=ceil($jumlahData/$this->getjumlahDataPerHalaman());
  	}
 
+ 	public function cariDataKaryawan($halaman,$isi)
+    {	
+        $_SESSION['halaman']=$halaman;
+        $_SESSION['isi']=$isi;
+    	$this->getjumlahHalaman2();
+ 		$halamanAktif=$_SESSION['halaman'];
+		$awalData=($this->getjumlahDataPerHalaman()*$halamanAktif)-$this->getjumlahDataPerHalaman();
+		$keyword = $_SESSION['isi'];
+        $query = "SELECT * FROM karyawan WHERE nama LIKE :keyword LIMIT ".$awalData.','.$this->getjumlahDataPerHalaman();
+        $this->db->query($query);
+        $this->db->bind('keyword', "%$keyword%");
+        return $this->db->resultSet();
+    }
  }

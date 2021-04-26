@@ -8,6 +8,11 @@ class Karyawan extends Controller{
 		$this->view('karyawan/index',$data);
 		$this->view('templates/footer');	
 	}
+	
+	public function cari($halaman,$isi="Data Tidak Ditemukan"){
+		$data['karyawan']=$this->model('Karyawan_model')->cariDataKaryawan($halaman,$isi);
+		$this->view('karyawan/cari',$data);	
+	}
 
 	public function detail($id){
 		$data['judul']='Detail Karyawan';
@@ -20,11 +25,11 @@ class Karyawan extends Controller{
 	public function tambah(){
 		if ($this->model('Karyawan_model')->tambahDataKaryawan($_POST) > 0) {
 			Flasher::setFlash('berhasil','ditambahkan','success');
-			header('Location: '.BASEURL.'/karyawan');
+			header('Location: '.BASEURL.'/karyawan/1');
 			exit;
 		} else{
 			Flasher::setFlash('gagal','ditambahkan','danger');
-			header('Location: '.BASEURL.'/karyawan');
+			header('Location: '.BASEURL.'/karyawan/1');
 			exit;
 		}
 	}
@@ -32,11 +37,11 @@ class Karyawan extends Controller{
 	public function hapus($id,$gambar){
 		if ($this->model('Karyawan_model')->hapusDataKaryawan($id,$gambar) > 0) {
 			Flasher::setFlash('berhasil','dihapus','success');
-			header('Location: '.BASEURL.'/karyawan');
+			header('Location: '.BASEURL.'/karyawan/1');
 			exit;
 		} else{
 			Flasher::setFlash('gagal','dihapus','danger');
-			header('Location: '.BASEURL.'/karyawan');
+			header('Location: '.BASEURL.'/karyawan/1');
 			exit;
 		}
 	}
@@ -48,21 +53,12 @@ class Karyawan extends Controller{
 	public function ubah(){
 		if ($this->model('Karyawan_model')->ubahDataKaryawan($_POST) > 0) {
 			Flasher::setFlash('berhasil','diubah','success');
-			header('Location: '.BASEURL.'/karyawan');
+			header('Location: '.BASEURL.'/karyawan/1');
 			exit;
 		} else{
 			Flasher::setFlash('gagal','diubah','danger');
-			header('Location: '.BASEURL.'/karyawan');
+			header('Location: '.BASEURL.'/karyawan/1');
 			exit;
 		}
 	}
-
-	public function cari(){
-		$data['judul']='Daftar Karyawan';
-		$data['karyawan']=$this->model('Karyawan_model')->cariDataKaryawan();
-		$this->view('templates/header',$data);
-		$this->view('karyawan/index',$data);
-		$this->view('templates/footer');	
-	}
-
 }	

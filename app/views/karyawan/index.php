@@ -16,20 +16,19 @@
 
     <div class="row mb-3">
       <div class="col-lg-6">
-        <form action="<?= BASEURL; ?>/karyawan/cari" method="post">
-          <div class="input-group">
-            <input type="text" class="form-control" placeholder="cari karyawan.." name="keyword" id="keyword" autocomplete="off">
-            <div class="input-group-append">
-              <button class="btn btn-primary" type="submit" id="tombolCari">Cari</button>
+        <form action="<?= BASEURL; ?>/karyawan/cari/1" method="post">
+            <div class="input-group">
+              <input type="text" class="form-control" placeholder="cari karyawan.." name="keyword" id="keyword" autocomplete="off">
             </div>
-          </div>
         </form>
+        <img src="../../public/img/loader.gif" class="loader" height="50" style="margin-left: 450px;margin-top: -60px;display: none;">
       </div>
     </div>
-  
+
     <div class="row">
         <div class="col-lg-6">
           <h3>Daftar Karyawan</h3>
+          <div id="isiListData">
           <?php 
           $object1 = new Karyawan_model; 
           $jumlahHalaman=$object1->getjumlahHalaman();
@@ -37,19 +36,17 @@
           $halamanAktif1=$object2->parseURL();
           $halamanAktif=$halamanAktif1[1];
           ?>
-
-          <?php if ($halamanAktif>1): ?>
+          <?php if ($halamanAktif>1) : ?>
             <a href="<?= BASEURL; ?>/karyawan/<?= $halamanAktif-1; ?>">&laquo;</a>
           <?php endif; ?>
 
-          <?php 
-          for ($i=1; $i <= $jumlahHalaman; $i++) : ?>
+          <?php for ($i=1; $i <= $jumlahHalaman; $i++) : ?>
             <?php if ($i==$halamanAktif) : ?>
               <a href="<?= BASEURL; ?>/karyawan/<?= $i; ?>" class="font-weight-bold text-danger"><?= $i; ?></a> 
             <?php else : ?>
               <a href="<?= BASEURL; ?>/karyawan/<?= $i; ?>"><?= $i; ?></a>
             <?php endif; ?>  
-          <?php endfor; ?>
+          <?php endfor; ?>   
 
           <?php if ($halamanAktif<$jumlahHalaman): ?>
             <a href="<?= BASEURL; ?>/karyawan/<?= $halamanAktif+1; ?>">&raquo;</a>
@@ -57,19 +54,19 @@
 
           <ul class="list-group">
             <?php foreach( $data['karyawan'] as $kry ) : ?>
-              <li class="list-group-item">
-                  <?= $kry['nama']; ?>
-                  <a href="<?= BASEURL; ?>/karyawan/hapus/<?= $kry['id']; ?>/<?= $kry['gambar']; ?>" class="badge badge-danger float-right" onclick="return confirm('yakin?');" style="margin-left: 3px;">hapus</a>
+                <li class="list-group-item">
+                    <?= $kry['nama']; ?>
+                    <a href="<?= BASEURL; ?>/karyawan/hapus/<?= $kry['id']; ?>/<?= $kry['gambar']; ?>" class="badge badge-danger float-right" onclick="return confirm('yakin?');" style="margin-left: 3px;">hapus</a>
 
-                  <a href="<?= BASEURL; ?>/karyawan/ubah/<?= $kry['id']; ?>" class="badge badge-success float-right tampilModalUbah" data-toggle="modal" data-target="#formModal" data-id="<?= $kry['id']; ?>" style="margin-left: 3px;">ubah</a>
+                    <a href="<?= BASEURL; ?>/karyawan/ubah/<?= $kry['id']; ?>" class="badge badge-success float-right tampilModalUbah" data-toggle="modal" data-target="#formModal" data-id="<?= $kry['id']; ?>" style="margin-left: 3px;">ubah</a>
 
-                  <a href="<?= BASEURL; ?>/karyawan/detail/<?= $kry['id']; ?>" class="badge badge-primary float-right">detail</a>
-              </li>
+                    <a href="<?= BASEURL; ?>/karyawan/detail/<?= $kry['id']; ?>" class="badge badge-primary float-right">detail</a>
+                </li>
             <?php endforeach; ?>
-          </ul>      
+          </ul>  
+          </div> 
         </div>
     </div>
-
 </div>
 
 

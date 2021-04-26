@@ -1,4 +1,17 @@
 $(function(){
+	$('#keyword').on('keyup',function(){
+		$('.loader').show();
+		$.get('http://localhost/latihan/public/karyawan/cari/1/' + $('#keyword').val(),function(data){
+			$('#isiListData').html(data);
+			$('.loader').hide();
+		});
+	});
+
+	$('.tombol-pagination').on('click',function(e){
+		e.preventDefault();
+	});
+
+
 	$('.tombolTambahData').on('click',function(){
 		$('#formModalLabel').html('Tambah Data Karyawan');
 		$('.modal-footer button[type=submit]').html('Tambah Data');
@@ -8,7 +21,7 @@ $(function(){
 	        $('#skill').val('');
 	        $('#id').val('');
 	        $('.helptext').html('NOTE:Profile Harus Diupload,file harus jpg,jpeg,png,ukuran file maksimal 1mb');
-		});
+	});
 
 	$('.tampilModalUbah').on('click',function(){
 		$('#formModalLabel').html('Ubah Data Karyawan');
